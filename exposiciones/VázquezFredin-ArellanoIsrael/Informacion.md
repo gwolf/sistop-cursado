@@ -53,3 +53,17 @@ Por otro lado, un antimalware es una herramienta de seguridad que se enfoca en l
 <th>Protección de red	 </th>
 <td>Ayuda a evitar que los usuarios accedan a direcciones IP y dominios peligrosos que pueden hospedar estafas de suplantación de identidad (phishing), vulnerabilidades de seguridad y otro contenido malintencionado en Internet. </td>
 </table>
+
+<h2 align=center>Permisos y control de acceso de usuarios</h2>
+Existen 2 roles para poder acceder al servicio de enlace de windows Admin Center:
+<hr>
+<h3 >USUARIOS DE PUERTA DE ENLACE:</h3>
+
+Pueden conectarse al servicio de puerta de enlace de windows para administrar servidores mediante la puerta de enlace, pero no pueden cambiar los permisos de acceso.
+<hr>
+<h3 >ADMINISTRADORES DE PUERTA EDE ENLACE:</h3>
+
+Pueden configurar quien obtiene acceso y como se autentican los usuarios en la puerta de enlace.
+Control de acceso basado en roles
+Permite proporcionar a los usuarios acceso limitado a la maquina en lugar de hacerles administradores locales completos.
+El acceso a la puerta de enlace no implica el acceso a los servidores administrados visibles para la puerta de enlace. Para administrar un servidor de destino, el usuario que se conecta debe usar credenciales (ya sean las credenciales de paso a través de Windows o las credenciales proporcionadas en la sesión de Windows Admin Center mediante la acción Administrar como) con acceso administrativo al servidor de destino.
