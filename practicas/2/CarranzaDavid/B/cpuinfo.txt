@@ -5,7 +5,7 @@ model		: 142
 model name	: Intel(R) Core(TM) i5-8350U CPU @ 1.70GHz
 stepping	: 10
 microcode	: 0xf0
-cpu MHz		: 1900.000
+cpu MHz		: 741.989
 cache size	: 6144 KB
 physical id	: 0
 siblings	: 8
@@ -33,7 +33,7 @@ model		: 142
 model name	: Intel(R) Core(TM) i5-8350U CPU @ 1.70GHz
 stepping	: 10
 microcode	: 0xf0
-cpu MHz		: 1900.000
+cpu MHz		: 700.024
 cache size	: 6144 KB
 physical id	: 0
 siblings	: 8
@@ -61,7 +61,7 @@ model		: 142
 model name	: Intel(R) Core(TM) i5-8350U CPU @ 1.70GHz
 stepping	: 10
 microcode	: 0xf0
-cpu MHz		: 799.998
+cpu MHz		: 800.338
 cache size	: 6144 KB
 physical id	: 0
 siblings	: 8
@@ -89,7 +89,7 @@ model		: 142
 model name	: Intel(R) Core(TM) i5-8350U CPU @ 1.70GHz
 stepping	: 10
 microcode	: 0xf0
-cpu MHz		: 800.031
+cpu MHz		: 699.953
 cache size	: 6144 KB
 physical id	: 0
 siblings	: 8
@@ -117,7 +117,7 @@ model		: 142
 model name	: Intel(R) Core(TM) i5-8350U CPU @ 1.70GHz
 stepping	: 10
 microcode	: 0xf0
-cpu MHz		: 800.011
+cpu MHz		: 799.994
 cache size	: 6144 KB
 physical id	: 0
 siblings	: 8
@@ -145,7 +145,7 @@ model		: 142
 model name	: Intel(R) Core(TM) i5-8350U CPU @ 1.70GHz
 stepping	: 10
 microcode	: 0xf0
-cpu MHz		: 1900.000
+cpu MHz		: 714.813
 cache size	: 6144 KB
 physical id	: 0
 siblings	: 8
@@ -173,7 +173,7 @@ model		: 142
 model name	: Intel(R) Core(TM) i5-8350U CPU @ 1.70GHz
 stepping	: 10
 microcode	: 0xf0
-cpu MHz		: 799.920
+cpu MHz		: 1900.000
 cache size	: 6144 KB
 physical id	: 0
 siblings	: 8
@@ -201,7 +201,7 @@ model		: 142
 model name	: Intel(R) Core(TM) i5-8350U CPU @ 1.70GHz
 stepping	: 10
 microcode	: 0xf0
-cpu MHz		: 800.033
+cpu MHz		: 673.882
 cache size	: 6144 KB
 physical id	: 0
 siblings	: 8
