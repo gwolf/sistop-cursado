@@ -12,6 +12,7 @@
 \setlength{\parindent}{0cm}
 \setlength{\parskip}{8pt}
 \graphicspath{{./img/}}
+\addbibresource{biblio.bib}
 
 \title{Docker}
 \author{Carranza Ochoa, José David \\ Ríos Lira, Gamaliel}
@@ -39,7 +40,6 @@ exponer sus características fundamentales y su importancia dentro de las áreas
 de tecnologías de la información actualmente. Lo anterior bajo un marco de 
 referencia orientado a la materia de Sistemas Operativos.
 
-
 \section{Desarrollo}
 \subsection{Máquinas virtuales}
 El concepto de máquina virtual (VM por sus siglas en inglés) se trata de la 
@@ -51,7 +51,8 @@ máquinas virtuales se requiere de un programa especializado denominado
 \textit{hypervisor}.
 
 El problema que traen consigo las máquinas virtuales es que agregan mucha 
-carga de trabajo al \textit{host} y con ello, su ejecución es sumamente lenta.
+carga de trabajo al \textit{host} debido a la capa de abstracción que requiere 
+el \textit{hypervisor}. Con esto, su ejecución podría llegar a tornarse lenta.
 
 \subsection{Contenedores}
 Los contenedores son una aproximación para resolver las desventajas que traen 
@@ -89,8 +90,8 @@ contenedores. De forma general, a través de \textit{Docker} y las interfaces
 que proporciona, se pueden crear, modificar, borrar e interactuar internamente 
 con los contenedores de una aplicación. El uso de contenedores de Linux para 
 desplegar aplicaciones es denominado contenerización (del inglés 
-\textit{containerization}).  Particularmente, la utilización de contendores no 
-es algo nuevo; sin embargo, su uso para desplegar aplicaciones de forma 
+\textit{containerization}).  Particularmente, la utilización de contenedores 
+no es algo nuevo; sin embargo, su uso para desplegar aplicaciones de forma 
 sencilla sí lo es.
 
 En la Figura \ref{fig:vm-vs-docker} se puede apreciar una comparación entre el 
@@ -138,7 +139,7 @@ descritas anteriormente, \textit{Docker} necesita hacer uso de algunas
 funciones del kernel de Linux, como los \textbf{grupos de control} y los 
 \textbf{namespaces}.
 
-\subsubsection{Espacios de nombres (Namespaces)}
+\subsubsection{Espacios de Nombres (namespaces)}
 Tal como se sabe, una de las mayores características que debe proporcionar un 
 sistema operativo es el \textbf{aislamiento}. Para el ámbito en cuestión, este 
 concepto hace referencia a que los procesos en ejecución no deben preocuparse 
@@ -172,7 +173,7 @@ internamente son los siguientes:
     el \textit{hostname} y el nombre de dominio NIS.
 \end{itemize}
 
-\subsubsection{Grupos de Control}
+\subsubsection{Grupos de Control (cgroups)}
 Sumado a lo anterior ---y tal como ya se mencionó anteriormente---, 
 \textit{Docker} también hace uso de los \textbf{grupos de control} 
 (\textit{cgroups}) del kernel.  Estos le permiten compartir recursos de 
@@ -185,10 +186,29 @@ requerir.
 De forma interna, algunos de los grupos de control que \textit{Docker} utiliza 
 son:
 \begin{itemize}
-  \item \textbf{Memory cgroup.}
-  \item \textbf{CPU cgroup.}
-  \item \textbf{Devices cgroup.}
+  \item \textbf{Memory cgroup.} Limita el uso de memoria para procesos y 
+    genera reportes de los recursos de memoria utilizados por cada proceso.
+  \item \textbf{CPU cgroup.} Límites de utilización de la CPU para un proceso.  
+    Evita que un proceso consuma mucho tiempo de CPU, evitando que esto afecte 
+    negativamente al desempeño del sistema.
+  \item \textbf{Devices cgroup.} Permite o restringe el acceso a dispositivos 
+    par aun proceso.
 \end{itemize}
+
+\subsubsection{Sistema de archivos}
+Cada contenedor, como ya se explicó anteriormente, necesita tener un sistema 
+de archivos aislado que aparente ser ``único'' para el proceso que esté 
+ejecutando. Esto no significa que sea totalmente independiente del sistema 
+operativo \textit{host}; más bien, hace referencia a que el proceso supondrá 
+que el sistema de archivos al que tiene acceso es el único disponible y no 
+sabrá que internamente no es más que una sección del sistema de archivos del 
+sistema \textit{host}, al cual evidentemente no tendrá acceso ---al menos no 
+directamente. Esta tarea se lleva a cabo a través de una herramienta 
+disponible para los sistemas operativos basados en Unix ---tal como el caso de 
+Linux--- llamada \textit{chroot}. Esta herramienta hace posible invocar un 
+proceso, cambiando para este y sus hijos el directorio raíz del sistema. Esto 
+no es más que otra forma de aislamiento que se agrega al proceso en ejecución 
+por el contenedor.
 
 \subsection{Desventajas}
 Durante la investigación elaborada, se encontró un dato muy importante de 
@@ -199,7 +219,7 @@ implementación cuenta con un detalle que los expertos en el ámbito de la
 seguridad informática siempre han criticado. La ejecución del \textit{Docker 
 Deamon} ---una de las herramientas que trae integrada internamente--- necesita 
 tener privilegios de \textit{root}. Con esto, la posibilidad de que un 
-contendor se libere de su ``contexto aislado'' y ejecute código en el sistema 
+contenedor se libere de su ``contexto aislado'' y ejecute código en el sistema 
 \textit{host} siempre está presente. Esto no es un detalle menor y aún con el 
 paso del tiempo nunca ha podido ser corregido.
 
@@ -208,6 +228,35 @@ Lo anterior ha orillado a la creación de nuevas plataformas similares a
 desarrollando una alternativa sumamente similar y compatible con 
 \textit{Docker}, en la cual se corrige de forma definitiva el detalle antes 
 mencionado.
+
+Finalmente, la herramienta \textit{DockerHub}, un complemento de 
+\textit{Docker} a través de donde se obtienen imágenes de contenedores, ha 
+sido vulnerada a través de la publicación de imágenes maliciosas que algunas 
+veces ejecutan procesos por detrás con la finalidad de obtener beneficios. No 
+pasa esto con todas las imágenes, la mayor parte de este problema se concentra 
+en imágenes \textbf{no oficiales}, publicadas por personas aisladas que no 
+pertenecen a algún tipo de organización. Aún cuando esto es una desventaja, se 
+puede contrarrestar haciendo uso de imágenes \textbf{oficiales}.
+
+\section{Conclusiones}
+Tal como se expuso anteriormente, \textit{Docker} es una herramienta que hace 
+uso de una solución innovadora para para la gestión de contenedores. La parte 
+interna de su funcionamiento está arraigada complemente a la forma en la que 
+trabaja el kernel del sistema operativo, más específicamente el kernel de 
+Linux ---\textit{namespaces}, \textit{cgroups}, procesos, etc. El tema resulta 
+ser de amplia importancia para la materia de Sistemas Operativos, más aún 
+cuando son patrones de soluciones que se utilizan actualmente en la industria.  
+A pesar de esto, no todo es perfecto y en el caso de \textit{Docker}, tiene 
+algunas limitantes que no son menores. Nos parece que \textit{Docker} marcó un 
+antes y un despues en los aspectos relacionados con el uso de contenedores 
+para desplegar aplicaciones, a tal punto que está siendo la referencia de 
+partida para tecnologías emergentes.
+
+% Impresión de Bibliografía
+\clearpage
+\nocite{*}
+\section{Bibliografía}
+\printbibliography[heading=none]
 
 \end{document}
 
