@@ -17,7 +17,7 @@ int proceso_hijo_accion(){
     int num_random;
     srand(getpid());                 // id del proceso
     num_random = (rand() % 256);     // Para mantenerlo en el rango que admite exit
-    printf("HIJO: Hola, soy un proceso hijo con pid: %d, he calculado el valor random = %d.\n\n",getpid(),num_random);
+    printf("HIJO: Hola, soy un proceso hijo con pid: %d, he calculado el valor random = %d.\n",getpid(),num_random);
     return num_random;
 }
 
@@ -42,7 +42,7 @@ int main()
         // El padre espera que los hijos terminen para saber su valor de retorno.
         for(int i=0;i<NUM_CHILD;i++){
             p_idC = wait(&status);      // Devuelve el identificador del proceso que ha terminado.
-            printf("PADRE: Hola, soy el padre con pid: %d, mi hijo de pid: %d ha terminado y su estado es: %d.\n\n",getpid(),p_idC,WEXITSTATUS(status));
+            printf("PADRE: Hola, soy el padre con pid: %d, mi hijo de pid: %d ha terminado y su estado es: %d.\n",getpid(),p_idC,WEXITSTATUS(status));
         }
 
         // El padre se quedará en un bucle para dormir
