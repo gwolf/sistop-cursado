@@ -30,4 +30,5 @@ int main(int argc, char *argv[])
         pthread_join(hilo1, NULL);
 
         return 0;
+
 }
