@@ -2,7 +2,7 @@
 int aquiere(int semaforo);
 int realese(int semaforo);
 int init();
-void semaforo ()
+void main ()
 {
 	int semaforo, opc=0;
 	semaforo=init();
@@ -11,6 +11,7 @@ void semaforo ()
 	{
 		printf("\n \t Que desea hacer:_");
 		printf("\n \t 1)... aquiere \n \t 2)... realese \n \t 3)... salir" );
+		sacnf("%i",opc)
 		switch(opc)
 		{
 			case 1:
