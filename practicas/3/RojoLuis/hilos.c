@@ -27,7 +27,7 @@ int main()
     int *d = (int *)malloc(sizeof(int) * length);
     int *e = (int *)malloc(sizeof(int) * length);
 
-    printf("\n\n------Suma de arreglos (n=%d)-------\n\n",length);
+    printf("\n\n\n------Suma de arreglos (n=%d)-------\n\n\n",length);
     
     t1 = omp_get_wtime();
     sumarArreglos_sec(a,b,c,length);                        //Se ejecuta la función y se obtiene su tiempo de ejecución 
@@ -45,10 +45,10 @@ int main()
     printf("\nUsando 8 hilos\nTiempo paralelo for %f\n\n",t2-t1);
 
     imprimirArreglo(a, length);                            //Se imprimen los arreglos que llenamos aleatoriamente
-    printf("\n");
+    printf("\n\n");
     imprimirArreglo(b, length);
 
-    printf("\n-----------------------------------------------------------------------------------\n");
+    printf("\n\n-----------------------------------------------------------------------------------\n\n");
 
     printf("Secuencial:\n");
     imprimirArreglo(c, length);                             //Se imprimen los arreglos que tienen los resultados 
