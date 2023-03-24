@@ -21,6 +21,6 @@ public class SumaComplejos {
         System.out.println("La suma de los números complejos es:");
         System.out.println(realResultado + " + " + imagResultado + "i");
 
-        System.out.println("Fin del programa.");
+        System.out.println("Fin del programa.\n");
     }
 }
