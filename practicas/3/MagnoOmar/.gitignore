@@ -1,1 +1,2 @@
-Este texto tiene muchas incongruencias, como por ejemplo, 2+2 = pez o que el PRI va a llegar a la presidencia, por lo tanto debe ser ignorado
+#Ignoramos los archivos txt generados por el script
+*.txt
